@@ -1,6 +1,6 @@
 # Hacker News Clone
 
-Deployed website: [https://helpful-tapioca-35fb50.netlify.app/](https://hackernews-nmohanan.netlify.app/)
+Deployed website: [https://hackernews-nmohanan.netlify.app/](https://hackernews-nmohanan.netlify.app/)
 
 ## About Hacker News
 
