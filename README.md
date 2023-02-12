@@ -1,6 +1,6 @@
 # Hacker News Clone
 
-Deployed website: https://hackernew.nmohanan26
+Deployed website: 
 
 ## About Hacker News
 
