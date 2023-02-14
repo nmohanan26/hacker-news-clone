@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="lg:h-6 md:h-10 sm:h-10 flex items-center" style={{backgroundColor: '#FF6600'}}>
         <div className='flex items-center '>
-          <img src={require('./logo.png')} alt="Logo" className="w-5 h-5 p-0.01 ml-0.5 mr-2" />
+          <img src={require('./logo.jpg')} alt="Logo" className="w-5 h-5 p-0.01 ml-0.5 mr-2" />
         </div>
         <div className="md:flex items-center sm:flex-row">
         <Link to="/" className="text-black font-bold text-md flex-shrink-0">Hacker News</Link>   
@@ -18,7 +18,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <span className="text-black "> |&nbsp;</span>
+            <span className="text-black ">|&nbsp;</span>
             <span className={`text-black`}>
               past&nbsp;
             </span>
