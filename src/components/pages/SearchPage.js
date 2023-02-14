@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -6,13 +7,14 @@ import StoriesBoard from '../boards/StoriesBoard'
 import CommentsBoard from '../boards/CommentsBoard'
 import Spinner from '../layout/Spinner'
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-
 const SearchPage = () => {
   const [loading, setLoading] = useState(false)
-  const [search, setSearch] = useState('')
+  const { search: searchQuery } = useParams();
+  const [search, setSearch] = useState(searchQuery)
   const [typeFilter, setTypeFilter] = useState('Story')
   const [byFilter, setByFilter] = useState('Popularity')
   const [timeFilter, setTimeFilter] = useState('All Time')
@@ -60,20 +62,31 @@ const SearchPage = () => {
   }
 
   useEffect(() => {
-    fetchResults()
-  }, [typeFilter, byFilter, timeFilter])
+    if (search) {
+      fetchResults();
+    }
+    setSearch(searchQuery);
+  }, [searchQuery,search,typeFilter, byFilter, timeFilter])
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    search(search)
+
     fetchResults()
   }
 
   return (
-    <div>
-      <div className='search-nav flex justify-around m-5'>
+    <div className="min-h-screen" style={{backgroundColor:"#F6F6EF"}}>
+      <nav className="lg:h-14 md:h-14 sm:h-14 flex items-center" style={{backgroundColor: '#FF742B'}}>
+        <div className='flex items-center '>
+          <img src={require('./logo_search.jpg')} alt="Logo" className="w-9 h-9 p-0.01 ml-0.5 mr-2" />
+        </div>
+        
+        <span className="text-black font-medium text-md ml-1 hidden sm:block flex-shrink-0">Search<br/>Hacker News</span>   
         {/* Search input  */}
-        <div className='search-bar grow mx-3'>
-          <div className='relative rounded-md shadow-sm '>
+        <div className="md:flex items-center sm:flex-row">
+        <div className='search-bar mx-3'>
+          <div className='relative '>
             <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
               <span className='text-gray-500 sm:text-sm'>
                 <svg
@@ -85,8 +98,8 @@ const SearchPage = () => {
                   className='w-4 h-4'
                 >
                   <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
+                    strokeLinecap='square'
+                    strokeLinejoin='bevel'
                     d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
                   />
                 </svg>
@@ -98,21 +111,32 @@ const SearchPage = () => {
               id='searchstory'
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className='block w-full rounded-md border-gray-300 pl-10 pr-12 sm:text-sm'
+              className='w-full md:w-600 lg:w-850 sm:w-200 border-gray-300 pl-10 pr-12 sm:text-sm '
               placeholder='Search stories by title, url or author, e.g. "nexus"'
               style={{ outline: 'none' }}
             />
+            
           </div>
+
         </div>
 
+      </div>
+      <div className='flex ml-auto justify-center'>
+        <img src={require('./Capture.PNG')} alt="Logo" className="w-8 h-9 p-0.01 ml-0.5 mr-2" /> 
+      </div>
+      <span className='ml-2 hidden sm:block my-auto'>Settings</span>
+    </nav>
+      <div className='search-nav flex justify-around m-5'>
+        
         {/* Filters */}
 
         {/* type filter */}
         <div className='type-filter mx-3'>
-          <span className='mr-2'>Type</span>
-          <Menu as='div' className='relative inline-block text-left'>
+          
+          <Menu as='div' className='flex items-center'>
+          <span className='mr-2 hidden sm:block'>Search</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100'>
+              <Menu.Button className='inline-flex justify-center rounded-md border border-gray-400 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {typeFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -121,15 +145,6 @@ const SearchPage = () => {
               </Menu.Button>
             </div>
 
-            <Transition
-              as={Fragment}
-              enter='transition ease-out duration-100'
-              enterFrom='transform opacity-0 scale-95'
-              enterTo='transform opacity-100 scale-100'
-              leave='transition ease-in duration-75'
-              leaveFrom='transform opacity-100 scale-100'
-              leaveTo='transform opacity-0 scale-95'
-            >
               <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                 <div className='py-1'>
                   <Menu.Item>
@@ -170,16 +185,16 @@ const SearchPage = () => {
                   </Menu.Item>
                 </div>
               </Menu.Items>
-            </Transition>
           </Menu>
         </div>
 
         {/* by filter */}
         <div className='by-filter mx-3'>
-          <span className='mr-2'>by</span>
-          <Menu as='div' className='relative inline-block text-left'>
+          
+          <Menu as='div' className='flex items-center'>
+          <span className='mr-2 hidden sm:block'>by</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100'>
+              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {byFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -187,16 +202,8 @@ const SearchPage = () => {
                 />
               </Menu.Button>
             </div>
-
-            <Transition
-              as={Fragment}
-              enter='transition ease-out duration-100'
-              enterFrom='transform opacity-0 scale-95'
-              enterTo='transform opacity-100 scale-100'
-              leave='transition ease-in duration-75'
-              leaveFrom='transform opacity-100 scale-100'
-              leaveTo='transform opacity-0 scale-95'
-            >
+                  
+           
               <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                 <div className='py-1'>
                   <Menu.Item>
@@ -237,16 +244,16 @@ const SearchPage = () => {
                   </Menu.Item>
                 </div>
               </Menu.Items>
-            </Transition>
           </Menu>
         </div>
 
         {/* time filter */}
         <div className='time-filter mx-3'>
-          <span className='mr-2'>for</span>
-          <Menu as='div' className='relative inline-block text-left'>
+          
+          <Menu as='div' className='flex items-center'>
+          <span className='mr-2 hidden sm:block'>for</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100'>
+              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {timeFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -254,16 +261,6 @@ const SearchPage = () => {
                 />
               </Menu.Button>
             </div>
-
-            <Transition
-              as={Fragment}
-              enter='transition ease-out duration-100'
-              enterFrom='transform opacity-0 scale-95'
-              enterTo='transform opacity-100 scale-100'
-              leave='transition ease-in duration-75'
-              leaveFrom='transform opacity-100 scale-100'
-              leaveTo='transform opacity-0 scale-95'
-            >
               <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                 <div className='py-1'>
                   <Menu.Item>
@@ -340,23 +337,9 @@ const SearchPage = () => {
                   </Menu.Item>
                 </div>
               </Menu.Items>
-            </Transition>
           </Menu>
-        </div>
-
-        {/* Search Button */}
-        <div className='search-button mx-3'>
-          <button
-            type='submit'
-            onClick={handleSubmit}
-            className='group relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white focus:outline-none bg-orange-500 '
-          >
-            Search
-          </button>
-        </div>
+        </div>                    
       </div>
-
-      {/* Stories or Comments board */}
       <div>
         {loading ? (
           <Spinner />
@@ -374,6 +357,7 @@ const SearchPage = () => {
           />
         )}
       </div>
+      
     </div>
   )
 }

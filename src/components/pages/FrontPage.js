@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import StoriesBoard from '../boards/StoriesBoard'
+import NewStoriesBoard from '../boards/NewStoriesBoard'
 import Spinner from '../layout/Spinner'
+import Navbar from '../layout/Navbar'
+
 
 const FrontPage = () => {
   const [stories, setStories] = useState([])
@@ -30,16 +32,18 @@ const FrontPage = () => {
   }, [])
 
   return (
-    <div className='px-0 py-0 sm:px-6' style={{backgroundColor: '#F6F6EF'}}>
+    <div className='px-0 pt-2' style={{backgroundColor: '#F6F6EF'}}>
+      <Navbar />
       {loading ? (
         <Spinner />
       ) : (
-        <StoriesBoard
+        <NewStoriesBoard
           stories={stories}
           storiesPerPage={storiesPerPage}
           totalStories={totalStories}
         />
       )}
+       
     </div>
   )
 }

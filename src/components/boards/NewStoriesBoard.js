@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Pagination from '../layout/Pagination'
-import Footer from '../layout/FooterSearch'
+import Pagination from '../layout/PaginationStory'
 import Story from './Story'
+import Footer from '../layout/FooterStory';
 
-const StoriesBoard = ({ stories, storiesPerPage, totalStories }) => {
+const NewStoriesBoard = ({ stories, storiesPerPage, totalStories }) => {
   const [page, setPage] = useState(1)
   // Getting current page stories
   const indexOfLastStory = page * storiesPerPage
@@ -35,7 +35,7 @@ const StoriesBoard = ({ stories, storiesPerPage, totalStories }) => {
           {currentPageStories.map((story, index) => {
             return <Story key={parseInt(index,10) + (page-1) * storiesPerPage} story={story} index={parseInt(index,10) + (page-1) * storiesPerPage} />
           })}
-          <div className='flex justify-center items-center'style={{backgroundColor: '#F6F6EF'}}>
+          <div className='flex  ml-9 p-3 mr-auto'>
           <Pagination
             storiesPerPage={storiesPerPage}
             totalStories={stories.length}
@@ -46,9 +46,8 @@ const StoriesBoard = ({ stories, storiesPerPage, totalStories }) => {
         </div>
         </div>
       )}
-    
     </div>
   )
 }
 
-export default StoriesBoard
+export default NewStoriesBoard
