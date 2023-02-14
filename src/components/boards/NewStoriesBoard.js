@@ -42,10 +42,12 @@ const NewStoriesBoard = ({ stories, storiesPerPage, totalStories }) => {
             paginate={paginate}
           />
           </div>
-          <Footer/>
+          
         </div>
+        <Footer/>
         </div>
       )}
+      
     </div>
   )
 }

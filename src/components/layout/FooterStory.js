@@ -13,20 +13,20 @@ const Footer = () => {
     }
   }
   return(
-  <footer className="border-t-2 border-orange-400 py-8">
-    <div className="container text-gray-700">
-    <ul className="flex text-xs text-gray-700 justify-center">
-      <li>Guidelines |&nbsp;</li>
-      <li>FAQ |&nbsp;</li>
-      <li>Lists |&nbsp;</li>
-      <li>API |&nbsp;</li>
-      <li>Security |&nbsp;</li>
-      <li>Legal |&nbsp;</li>
-      <li>Apply to YC |&nbsp;</li>
-      <li>Contact |&nbsp;</li>
+  <footer className="border-t-2 border-orange-400 pt-3">
+    <div className="container text-black">
+    <ul className="flex text-xs text-black justify-center">
+      <li>Guidelines <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>FAQ <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>Lists <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>API <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>Security <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>Legal <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>Apply to YC <span className='text-gray-500'>|&nbsp;</span></li>
+      <li>Contact</li>
     </ul>
-    <div class="flex flex-col p-4 sm:flex-row items-center justify-center">
-  <label for="searchstory" class="mb-2 sm:mr-2 text-sm sm:pb-3">Search:</label>
+    <div class="flex flex-col pt-2 sm:flex-row items-center justify-center">
+  <label for="searchstory" class="mb-2 text-gray-500 sm:mr-2 text-sm sm:pb-2">Search:</label>
   <div class="sm:w-400 lg:w-400 h-10 items-center">
     <input
       type="text"
@@ -36,7 +36,7 @@ const Footer = () => {
       onChange={(e) => setSearch(e.target.value)}
       onKeyDown={handleKeyPress}
       class="lg:w-80 border-gray-500 sm:text-sm"
-      style={{ outline:'medium',height:'20px',paddingBottom:0, width:'150px' }}
+      style={{ outline:'medium',height:'20px',padding:'1px', width:'150px' }}
     />
   </div>
 </div>

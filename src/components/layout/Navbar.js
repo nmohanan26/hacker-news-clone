@@ -10,7 +10,7 @@ const Navbar = () => {
         </div>
         <div className="md:flex items-center sm:flex-row">
         <Link to="/" className="text-black font-bold text-md flex-shrink-0">Hacker News</Link>   
-        <div className="lg:items-center text-sm sm:flex-wrap text-xs">
+        <div className="lg:items-center lg:text-sm md:text-sm sm:flex-wrap text-xs">
         <ul className="flex items-center">
           <li className="sm:ml-2 sm:mx-2 lg:ml-6">
             <Link to="/newstories" className={` ${location.pathname === '/newstories' ? 'text-white' : 'text-black'}`}>
@@ -56,7 +56,7 @@ const Navbar = () => {
         </ul>
       </div>        
       </div>
-       <div className="justify-between ml-auto text-black text-xs">login</div>
+       <div className="justify-between ml-auto lg:text-sm md:text-sm text-black text-xs">login</div>
     </nav>
   );
 };

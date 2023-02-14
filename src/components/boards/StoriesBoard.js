@@ -35,15 +35,16 @@ const StoriesBoard = ({ stories, storiesPerPage, totalStories }) => {
           {currentPageStories.map((story, index) => {
             return <Story key={parseInt(index,10) + (page-1) * storiesPerPage} story={story} index={parseInt(index,10) + (page-1) * storiesPerPage} />
           })}
-          <div className='flex justify-center items-center'style={{backgroundColor: '#F6F6EF'}}>
+          <div className='flex justify-center items-center'>
           <Pagination
             storiesPerPage={storiesPerPage}
             totalStories={stories.length}
             paginate={paginate}
           />
           </div>
-          <Footer/>
+         
         </div>
+        <Footer/>
         </div>
       )}
     

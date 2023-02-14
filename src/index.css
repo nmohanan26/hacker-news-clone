@@ -64,3 +64,16 @@ a {
 .story {
   background-color: #F6F6EF;
 }
+ .search-bar {
+  width:600px;
+ }
+ @media only screen and (max-width: 1068px) {
+  .search-bar {
+    width:400px;
+   }
+ }  
+ @media only screen and (max-width: 768px) {
+  .search-bar {
+    width:250px;
+   }
+ }  

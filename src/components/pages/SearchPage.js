@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import StoriesBoard from '../boards/StoriesBoard'
 import CommentsBoard from '../boards/CommentsBoard'
 import Spinner from '../layout/Spinner'
+import { Fragment } from 'react'
 
 
 function classNames(...classes) {
@@ -62,18 +62,13 @@ const SearchPage = () => {
   }
 
   useEffect(() => {
-    if (search) {
+    if(search) {
       fetchResults();
+    } else {
+      setSearchResult([]);
     }
-    setSearch(searchQuery);
-  }, [searchQuery,search,typeFilter, byFilter, timeFilter])
+  }, [search,typeFilter, byFilter, timeFilter])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    search(search)
-
-    fetchResults()
-  }
 
   return (
     <div style={{backgroundColor:"#F6F6EF"}}>
@@ -111,7 +106,7 @@ const SearchPage = () => {
               id='searchstory'
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className='w-full md:w-600 lg:w-850 sm:w-200 border-gray-300 pl-10 pr-12 sm:text-sm '
+              className='w-full lg:w-850 md:w-600 w-200 border-gray-300 pl-10 pr-12 sm:text-sm '
               placeholder='Search stories by title, url or author, e.g. "nexus"'
               style={{ outline: 'none' }}
             />
@@ -131,12 +126,12 @@ const SearchPage = () => {
         {/* Filters */}
 
         {/* type filter */}
-        <div className='type-filter mx-3'>
+        <div className='relative type-filter mx-3'>
           
           <Menu as='div' className='flex items-center'>
           <span className='mr-2 hidden sm:block'>Search</span>
             <div>
-              <Menu.Button className='inline-flex justify-center rounded-md border border-gray-400 px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
+              <Menu.Button className='inline-flex justify-center border border-gray-400 px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {typeFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -144,8 +139,8 @@ const SearchPage = () => {
                 />
               </Menu.Button>
             </div>
-
-              <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+           
+              <Menu.Items className='absolute left-0 z-10 mt-2 w-56 origin-top-left bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  transform translate-y-12'>
                 <div className='py-1'>
                   <Menu.Item>
                     {({ active }) => (
@@ -185,16 +180,17 @@ const SearchPage = () => {
                   </Menu.Item>
                 </div>
               </Menu.Items>
+              
           </Menu>
         </div>
 
         {/* by filter */}
-        <div className='by-filter mx-3'>
+        <div className='relative by-filter mx-3'>
           
           <Menu as='div' className='flex items-center'>
-          <span className='mr-2 hidden sm:block'>by</span>
+          <span className='mr-1 hidden sm:block'>by</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
+              <Menu.Button className='inline-flex w-full justify-center border border-gray-400 bg-white px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {byFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -204,7 +200,7 @@ const SearchPage = () => {
             </div>
                   
            
-              <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+              <Menu.Items className='absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  transform translate-y-12'>
                 <div className='py-1'>
                   <Menu.Item>
                     {({ active }) => (
@@ -248,12 +244,12 @@ const SearchPage = () => {
         </div>
 
         {/* time filter */}
-        <div className='time-filter mx-3'>
+        <div className='relative time-filter mx-3'>
           
           <Menu as='div' className='flex items-center'>
-          <span className='mr-2 hidden sm:block'>for</span>
+          <span className='mr-1 hidden sm:block'>for</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
+              <Menu.Button className='inline-flex w-full justify-center border border-gray-400 bg-white px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {timeFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -261,7 +257,7 @@ const SearchPage = () => {
                 />
               </Menu.Button>
             </div>
-              <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+              <Menu.Items className='absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  transform translate-y-20'>
                 <div className='py-1'>
                   <Menu.Item>
                     {({ active }) => (
