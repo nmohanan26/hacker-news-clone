@@ -76,7 +76,7 @@ const SearchPage = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{backgroundColor:"#F6F6EF"}}>
+    <div style={{backgroundColor:"#F6F6EF"}}>
       <nav className="lg:h-14 md:h-14 sm:h-14 flex items-center" style={{backgroundColor: '#FF742B'}}>
         <div className='flex items-center '>
           <img src={require('./logo_search.jpg')} alt="Logo" className="w-9 h-9 p-0.01 ml-0.5 mr-2" />
@@ -86,7 +86,7 @@ const SearchPage = () => {
         {/* Search input  */}
         <div className="md:flex items-center sm:flex-row">
         <div className='search-bar mx-3'>
-          <div className='relative '>
+          <div className='relative flex-grow'>
             <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
               <span className='text-gray-500 sm:text-sm'>
                 <svg
@@ -95,7 +95,7 @@ const SearchPage = () => {
                   viewBox='0 0 24 24'
                   strokeWidth={3.5}
                   stroke='rgb(255,116,43)'
-                  className='w-4 h-4'
+                  className='w-5 h-5'
                 >
                   <path
                     strokeLinecap='square'
@@ -126,7 +126,7 @@ const SearchPage = () => {
       </div>
       <span className='ml-2 hidden sm:block my-auto'>Settings</span>
     </nav>
-      <div className='search-nav flex justify-around m-5'>
+      <div className='search-nav flex lg:mr-auto sm:ml-auto mt-2 items-center '>
         
         {/* Filters */}
 
@@ -136,7 +136,7 @@ const SearchPage = () => {
           <Menu as='div' className='flex items-center'>
           <span className='mr-2 hidden sm:block'>Search</span>
             <div>
-              <Menu.Button className='inline-flex justify-center rounded-md border border-gray-400 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
+              <Menu.Button className='inline-flex justify-center rounded-md border border-gray-400 px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {typeFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -194,7 +194,7 @@ const SearchPage = () => {
           <Menu as='div' className='flex items-center'>
           <span className='mr-2 hidden sm:block'>by</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
+              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {byFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -253,7 +253,7 @@ const SearchPage = () => {
           <Menu as='div' className='flex items-center'>
           <span className='mr-2 hidden sm:block'>for</span>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
+              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-2 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-offset-gray-100' style={{backgroundColor: '#F6F6EF'}}>
                 {timeFilter}
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'

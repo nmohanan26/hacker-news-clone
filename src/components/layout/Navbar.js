@@ -13,43 +13,43 @@ const Navbar = () => {
         <div className="lg:items-center text-sm sm:flex-wrap text-xs">
         <ul className="flex items-center">
           <li className="sm:ml-2 sm:mx-2 lg:ml-6">
-            <Link to="/newstories" className={`lg:ml-2 ${location.pathname === '/newstories' ? 'text-white' : 'text-black'}`}>
+            <Link to="/newstories" className={` ${location.pathname === '/newstories' ? 'text-white' : 'text-black'}`}>
                new&nbsp;
             </Link>
           </li>
           <li>
-            <span className="lg:ml-3 sm:mr-2 text-black "> |&nbsp;</span>
-            <span className={`lg:ml-3 sm:mr-2 text-black`}>
+            <span className="text-black "> |&nbsp;</span>
+            <span className={`text-black`}>
               past&nbsp;
             </span>
           </li>
           <li>
-            <span className="lg:ml-3 sm:ml-2 text-sm text-black"> |&nbsp;</span>
-            <span className={`lg:ml-3 sm:ml-2 text-black `}>
+            <span className="text-sm text-black"> |&nbsp;</span>
+            <span className={`text-black `}>
               comments&nbsp;
             </span>
           </li>        
           <li>
-            <span className="lg:ml-3 sm:ml-2 text-sm text-black "> |&nbsp;</span>
-            <span className={`lg:ml-3 sm:ml-2 text-black`}>
+            <span className=" text-sm text-black "> |&nbsp;</span>
+            <span className={`text-black`}>
               ask&nbsp;
             </span>
           </li>
           <li>
-            <span className="lg:ml-3 sm:ml-2 text-sm text-black"> |&nbsp;</span>
-            <span className={`lg:ml-3 sm:ml-2 text-black`}>
+            <span className="text-sm text-black"> |&nbsp;</span>
+            <span className={`text-black`}>
               show&nbsp;
             </span>
           </li>
           <li>
-            <span className="lg:ml-3 sm:ml-2 text-sm text-black"> |&nbsp;</span>
-            <span className={`lg:ml-3 sm:ml-2 text-black`}>
+            <span className="text-sm text-black"> |&nbsp;</span>
+            <span className={`text-black`}>
               jobs&nbsp;
             </span>
           </li>
           <li>
-            <span className="lg:ml-3 sm:ml-2 text-sm text-black"> |&nbsp;</span>
-            <span className={`lg:ml-3 sm:ml-2 text-black`}>
+            <span className="text-sm text-black"> |&nbsp;</span>
+            <span className={`text-black`}>
             submit
             </span>
           </li>

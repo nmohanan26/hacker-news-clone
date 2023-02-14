@@ -25,9 +25,9 @@ const Footer = () => {
       <li>Apply to YC |&nbsp;</li>
       <li>Contact |&nbsp;</li>
     </ul>
-    <div class="flex flex-col p-2 sm:flex-row items-center justify-center">
-  <label for="searchstory" class="mb-2 sm:mr-2 justify-center">Search:</label>
-  <div class="sm:w-400 lg:w-800 items-center">
+    <div class="flex flex-col p-4 sm:flex-row items-center justify-center">
+  <label for="searchstory" class="mb-2 sm:mr-2 text-sm sm:pb-3">Search:</label>
+  <div class="sm:w-400 lg:w-400 h-10 items-center">
     <input
       type="text"
       name="searchstory"
@@ -35,8 +35,8 @@ const Footer = () => {
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       onKeyDown={handleKeyPress}
-      class="w-full border-gray-300 pl-10 pr-12 sm:text-sm"
-      style={{ outline: "thin" }}
+      class="lg:w-80 border-gray-500 sm:text-sm"
+      style={{ outline:'medium',height:'20px',paddingBottom:0, width:'150px' }}
     />
   </div>
 </div>
